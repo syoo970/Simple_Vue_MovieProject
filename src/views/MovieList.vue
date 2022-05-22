@@ -6,7 +6,11 @@
   >
   <Swiper
     :navigation="true"
-    :slides-per-view="5"
+    :slidesPerView="3"
+    :rewind="true"
+    :keyboard="{
+      enabled: true,
+    }"
     :modules="modules"
     :space-between="20"
     class="movieCarousel"
@@ -24,7 +28,10 @@
       </swiper-slide>
     </template>
   </Swiper>
-  <div v-if="movies.length">
+  <div
+    v-if="movies.length"
+    class="link-button"
+  >
     <router-link
       v-show="page !== '1'"
       :to="`/${name}/${parseInt(page)-1}`"
@@ -92,7 +99,7 @@
 
 <script>
     import { Swiper, SwiperSlide } from 'swiper/vue';
-    import { Navigation } from "swiper";
+    import { Navigation, Keyboard } from "swiper";
     import 'swiper/css';
     import "swiper/css/navigation";
     import Cards from '~/components/common/Cards.vue';
@@ -106,7 +113,7 @@
         },
         setup() {
           return {
-            modules: [Navigation],
+            modules: [Navigation, Keyboard],
           };
         },
         data() {
@@ -167,6 +174,9 @@
 
 <style lang="scss" scoped>
   .swiper {
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 1rem;
       &-slide {
         align-self: stretch;
         img {
@@ -188,6 +198,23 @@
             justify-content: center;
             align-items: center;
           }
+        }
+      }
+    }
+    .link-button {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      a {
+        text-decoration: none;
+        color: white;
+        background: #00bcd4;
+        padding: 5px 10px;
+        border-radius: 5px;
+        &:hover {
+          cursor: pointer;
         }
       }
     }
