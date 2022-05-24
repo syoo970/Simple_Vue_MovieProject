@@ -8,6 +8,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Smooch&display=swap');
   .main {
     &--home {
+      width: 100%;
       height: 100%;
       background: linear-gradient(to top, transparent , #141414), url(https://vuemovie.s3.ap-northeast-2.amazonaws.com/netflix-background-128505-385441-537479.png);
       background-repeat: no-repeat;

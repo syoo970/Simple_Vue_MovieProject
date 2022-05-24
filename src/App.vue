@@ -28,6 +28,10 @@ export default {
       background: linear-gradient(to bottom, #141414, transparent), url(https://vuemovie.s3.ap-northeast-2.amazonaws.com/curtain-1275200_1280.png);
       background-repeat: no-repeat;
       background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
   }
 </style>

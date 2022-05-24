@@ -3,6 +3,7 @@
     v-if="!movies.length"
     src="https://vuemovie.s3.ap-northeast-2.amazonaws.com/movieNotFound.png"
     alt="not-found"
+    style="margin-top: 20px;"
   >
   <Swiper
     :navigation="true"
@@ -156,7 +157,7 @@
           async handleModal(movieId) {
             this.isModalUp = true;
             const res = await getMovieDetail(movieId);
-            this.currMovieDetail = { ...res.data };
+            this.currMovieDetail = { ...res.data.response };
           },  
         }
     };

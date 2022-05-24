@@ -25,13 +25,14 @@ export default createStore({
         async searchMovie({ commit }, { title, page } ) {
             commit('updateSearchTitle', title);
             const res = await getMovie(title, page);
-            if (res.data.Response === 'True') commit('updateMovieList', res.data.Search);
+            const { Response, Search } = res.data.response;
+            if (Response === 'True') commit('updateMovieList', Search);
             else commit('updateMovieList', []);
         },
         async moveMoviePage({ commit, state }, { direction }) {
             commit('updateCurrentPage', direction === 'next' ? state.currentPage + 1 : state.currentPage - 1); //currentPageUpdate
             const res = await getMovie(state.searchTitle, state.currentPage);
-            commit('updateMovieList', res.data.Search);
+            commit('updateMsovieList', res.data.Search);
         }
     }
 });

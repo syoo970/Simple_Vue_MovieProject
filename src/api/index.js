@@ -1,12 +1,17 @@
 import axios from "axios";
 
-const API_KEY = '7035c60c';
-const API_END_POINT = 'http://www.omdbapi.com/';
-
 export const getMovie = async (title, page) => {
-    return await axios.get(`${API_END_POINT}`, { params: { apikey: API_KEY, s: title, page } });
+    return await axios.post(`https://qzwoyfe1n0.execute-api.ap-northeast-2.amazonaws.com/Prod`, {
+        callType: 'search',
+        title,
+        page
+    });
 };
 
 export const getMovieDetail = async (id, plot = 'short') => {
-    return await axios.get(`${API_END_POINT}?apikey=${API_KEY}&i=${id}&plot=${plot}`);
+    return await axios.post(`https://2ho8m87pm5.execute-api.ap-northeast-2.amazonaws.com/Prod`,{
+        callType: 'detail',
+        id,
+        plot
+    });
 };

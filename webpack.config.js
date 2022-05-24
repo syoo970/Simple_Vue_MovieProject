@@ -1,12 +1,18 @@
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     resolve: {
         extensions: ['.vue', '.js'],
         alias: {
             '~': path.resolve(__dirname, 'src'),
+        },
+        fallback: {
+            "fs": false,
+            "path": false ,
+            "os": false
         }
     },
     entry: './src/main.js',
@@ -36,6 +42,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
         }),
+        new Dotenv(),
     ],
     devServer: {
         port: 1234,
